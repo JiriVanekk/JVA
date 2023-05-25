@@ -1,9 +1,6 @@
-#url-container {
-    text-align: center;
-    margin-top: 100px;
-}
-
-#url-display {
-    font-size: 24px;
-    color: #333;
+#content {
+  width: 500px;
+  height: 300px;
+  border: 1px solid #ccc;
+  padding: 10px;
 }
