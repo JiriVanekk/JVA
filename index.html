@@ -11,6 +11,9 @@
     .iframe-container {
       width: 100vw;
       height: 100vh;
+      position: absolute;
+      top: 0;
+      left: 0;
       display: none;
     }
 
@@ -23,10 +26,10 @@
 </head>
 <body>
   <div class="iframe-container">
-    <iframe src="https://status.rondainvest.cz/"></iframe>
+    <iframe id="iframe1" src="https://status.rondainvest.cz/"></iframe>
   </div>
   <div class="iframe-container">
-    <iframe src="https://grafana.dc1.cz.paymont.eu/"></iframe>
+    <iframe id="iframe2" src="https://grafana.dc1.cz.paymont.eu/"></iframe>
   </div>
 
   <script>
@@ -34,12 +37,18 @@
     var currentFrameIndex = 0;
 
     function showNextFrame() {
-      iframes[currentFrameIndex].style.display = 'none';
+      iframes.forEach(function (iframe) {
+        iframe.style.display = 'none';
+      });
+
       currentFrameIndex = (currentFrameIndex + 1) % iframes.length;
       iframes[currentFrameIndex].style.display = 'block';
     }
 
-    setInterval(showNextFrame, 60000); // Switch every 60 seconds (adjust as needed)
+    window.onload = function() {
+      showNextFrame();
+      setInterval(showNextFrame, 60000); // Switch every 60 seconds (adjust as needed)
+    };
   </script>
 </body>
 </html>
