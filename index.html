@@ -10,8 +10,8 @@
 
     .iframe-container {
       width: 100vw;
-      height: 50vh;
-      display: flex;
+      height: 100vh;
+      display: none;
     }
 
     iframe {
@@ -28,5 +28,18 @@
   <div class="iframe-container">
     <iframe src="https://grafana.dc1.cz.paymont.eu/"></iframe>
   </div>
+
+  <script>
+    var iframes = document.querySelectorAll('.iframe-container');
+    var currentFrameIndex = 0;
+
+    function showNextFrame() {
+      iframes[currentFrameIndex].style.display = 'none';
+      currentFrameIndex = (currentFrameIndex + 1) % iframes.length;
+      iframes[currentFrameIndex].style.display = 'block';
+    }
+
+    setInterval(showNextFrame, 60000); // Switch every 60 seconds (adjust as needed)
+  </script>
 </body>
 </html>
